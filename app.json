@@ -21,10 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "HIGH_SAMPLING_RATE_SENSORS"
+      ],
+      "package": "com.myedu2502.FitFlare"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "37175fcd-9927-45e3-be34-6b4c29217095"
+      }
     }
   }
 }
