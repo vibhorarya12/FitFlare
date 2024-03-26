@@ -2,14 +2,23 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import React from "react";
 import Onboarding from "react-native-onboarding-swiper";
 import LottieView from "lottie-react-native";
-const { height, width } = Dimensions.get("window");
+import { useNavigation } from "@react-navigation/native";
+import { setItem } from "../Utils/asyncStorage";
+const { width } = Dimensions.get("window");
 export default function OnBoardingScreen() {
+  const navigation = useNavigation();
+  const handleDone = ()=>{
+   
+    navigation.navigate("userinfo");
+    setItem("onboarded", "1");
+  }
   return (
     <View style={styles.container}>
       <Onboarding
         containerStyles={{ paddingHorizontal: 15 }}
         bottomBarHighlight={false}
         showSkip={false}
+        onDone={handleDone}
         pages={[
           {
             backgroundColor: "#628920",
