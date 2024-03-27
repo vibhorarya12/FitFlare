@@ -22,9 +22,12 @@
     "lottie-react-native": "^6.5.1",
     "react": "18.2.0",
     "react-native": "0.73.5",
+    "react-native-circular-progress-indicator": "^4.4.2",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-onboarding-swiper": "^1.2.0",
     "react-native-pager-view": "6.2.3",
+    "react-native-reanimated": "~3.6.2",
+    "react-native-svg": "^15.1.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-wheel-scrollview-picker": "^2.0.4"
   },

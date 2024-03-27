@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-
 const { height, width } = Dimensions.get("window");
 
 export default function Gender() {
@@ -53,13 +52,18 @@ export default function Gender() {
         </TouchableOpacity>
       </View>
       <View style={styles.buttonContainer}>
-      {selectedGender?<TouchableOpacity style={styles.button} onPress={()=>navigation.navigate("Weight")}>
-          <Ionicons
-            name="arrow-forward-outline"
-            size={width * 0.08}
-            color="#ea2b04"
-          />
-        </TouchableOpacity>:null}
+        {selectedGender ? (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Weight")}
+          >
+            <Ionicons
+              name="arrow-forward-outline"
+              size={width * 0.08}
+              color="#ea2b04"
+            />
+          </TouchableOpacity>
+        ) : null}
       </View>
     </View>
   );
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
   genderContainer: {
     flex: 7,
     borderColor: "white",
-    
     alignItems: "center",
     flexDirection: "column",
     gap: width * 0.03,
@@ -88,7 +91,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 2,
     borderColor: "white",
-    
     justifyContent: "center",
     alignItems: "center",
   },
@@ -100,7 +102,6 @@ const styles = StyleSheet.create({
   genderItems: {
     width: width * 0.5,
     height: width * 0.13,
-
     borderRadius: 30,
     display: "flex",
     flexDirection: "row",
