@@ -5,7 +5,9 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
+import LottieView from "lottie-react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import Ionicons from "@expo/vector-icons/Ionicons";
 const { width, height } = Dimensions.get("window");
@@ -14,14 +16,25 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.ProgressContainer}>
+        <View style={styles.tabBarContainer}>
+          <Ionicons
+            name="accessibility"
+            size={width * 0.07}
+            color="#841DAD"
+            style={{
+              paddingHorizontal: width * 0.03,
+              paddingVertical: width * 0.02,
+            }}
+          />
+        </View>
         <View style={styles.CircularProgress}>
           <CircularProgress
-            value={60}
+            value={1000}
             radius={width * 0.35}
             duration={1500}
             progressValueColor={"black"}
             progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
-            maxValue={100}
+            maxValue={5000}
             title={"Steps today"}
             titleColor={"black"}
             titleStyle={{
@@ -35,23 +48,109 @@ export default function Home() {
         </View>
         <View style={styles.stats}>
           <View style={styles.statsItem}>
-            <Ionicons name="fast-food" size={width * 0.1} color="#7209B7"  />
-            <Text style={{fontSize:width*0.04}}>300 Kcal</Text>
-            <Text style={{fontWeight:'bold', fontSize:width*0.03}}>Calories</Text>
+            <Ionicons name="fitness" size={width * 0.1} color="#CD2331" />
+            <Text style={{ fontSize: width * 0.04 }}>300 Kcal</Text>
+            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+              Calories
+            </Text>
           </View>
           <View style={styles.statsItem}>
-          <Ionicons name="pie-chart" size={width * 0.1} color="#118AB2" />
-            <Text style={{fontSize:width*0.04}}>45%</Text>
-            <Text style={{fontWeight:'bold', fontSize:width*0.03}}>Today's goal</Text>
+            <Ionicons name="pie-chart" size={width * 0.1} color="#118AB2" />
+            <Text style={{ fontSize: width * 0.04 }}>45%</Text>
+            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+              Today's goal
+            </Text>
           </View>
           <View style={styles.statsItem}>
-          <Ionicons name="walk" size={width * 0.1} color="#EAC435" />
-            <Text style={{fontSize:width*0.04}}>6Km</Text>
-            <Text style={{fontWeight:'bold', fontSize:width*0.03}}>Distance</Text>
+            <Ionicons name="walk" size={width * 0.1} color="#EAC435" />
+            <Text style={{ fontSize: width * 0.04 }}>6Km</Text>
+            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+              Distance
+            </Text>
           </View>
         </View>
       </View>
-      <View style={styles.CurrentStatsContainer}></View>
+      <View style={styles.FeatureContainer}>
+        <View style={styles.waterIntakeBox}>
+          <LottieView
+            source={require("../assets/animations/running.json")}
+            autoPlay
+            loop
+            style={{ flex: 7 }}
+          />
+          <Text
+            style={{
+              flex: 3,
+              alignSelf: "center",
+              fontWeight: "bold",
+              fontSize: width * 0.04,
+              opacity: 0.6,
+            }}
+          >
+            Your monthly stats
+          </Text>
+        </View>
+        <View style={styles.monthlyStatsBox}>
+          <LottieView
+            source={require("../assets/animations/intake.json")}
+            autoPlay
+            loop
+            style={{ flex: 7 }}
+          />
+          <Text
+            style={{
+              flex: 3,
+              alignSelf: "center",
+              fontWeight: "bold",
+              fontSize: width * 0.04,
+              opacity: 0.6,
+            }}
+          >
+            Water intake reminder
+          </Text>
+        </View>
+      </View>
+      <View style={styles.extraConatiner}>
+        <View style={styles.extraBox}>
+          <View style={styles.BoxItems}>
+            <TouchableOpacity>
+          <Ionicons name="scale" size={width * 0.11} color="#5B2A86" />
+          </TouchableOpacity>
+          <Text style={{
+             
+              alignSelf: "center",
+              fontWeight: "bold",
+              fontSize: width * 0.035,
+              opacity: 0.6,
+            }} >Track Calories</Text>
+          </View>
+          <View style={styles.BoxItems}>
+          <TouchableOpacity>
+          <Ionicons name="footsteps" size={width * 0.11} color="#FF6978" />
+          </TouchableOpacity>
+          <Text style={{
+             
+              alignSelf: "center",
+              fontWeight: "bold",
+              fontSize: width * 0.035,
+              opacity: 0.6,
+            }} >Set Goal</Text>
+          </View>
+          <View style={styles.BoxItems}>
+          <TouchableOpacity>
+          <Ionicons name="timer" size={width * 0.11} color="#03045E" />
+          </TouchableOpacity>
+          <Text style={{
+             
+              alignSelf: "center",
+              fontWeight: "bold",
+              fontSize: width * 0.035,
+              opacity: 0.6,
+            }} >Quick session</Text>
+          </View>
+         
+        </View>
+      </View>
     </View>
   );
 }
@@ -71,23 +170,37 @@ const styles = StyleSheet.create({
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
+    gap: width * 0.02,
+    marginTop: height * 0.06,
+  },
+
+  tabBarContainer: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    // borderColor: "black",
+    // borderWidth: 0.1,
+    width: width * 0.9,
+    justifyContent: "flex-end",
+    borderRadius: 20,
+    backgroundColor: "#E9E9E9",
   },
 
   CircularProgress: {
-    flex: 8,
+    flex: 7,
     borderColor: "black",
     // borderWidth: 2,
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
   stats: {
     flex: 2,
     borderColor: "black",
-    // borderWidth: 2,
     width: width,
     display: "flex",
     flexDirection: "row",
     gap: width * 0.03,
+    borderRadius: 20,
   },
   statsItem: {
     flex: 1,
@@ -98,9 +211,61 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  CurrentStatsContainer: {
-    flex: 4,
-    // borderWidth: 2,
+  FeatureContainer: {
+    flex: 3,
+
     borderColor: "black",
+    display: "flex",
+    flexDirection: "row",
+    gap: width * 0.04,
   },
+  waterIntakeBox: {
+    borderColor: "black",
+    flex: 5,
+    height: width * 0.4,
+    alignSelf: "center",
+    marginLeft: width * 0.03,
+    borderRadius: 20,
+    backgroundColor: "#E9E9E9",
+    display: "flex",
+    flexDirection: "column",
+  },
+  monthlyStatsBox: {
+    borderColor: "black",
+    flex: 5,
+    height: width * 0.5,
+    alignSelf: "center",
+    marginRight: width * 0.03,
+    borderRadius: 20,
+    backgroundColor: "#E9E9E9",
+    display: "flex",
+    flexDirection: "column",
+  },
+  extraConatiner: {
+    flex: 2,
+
+    borderColor: "black",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  extraBox: {
+    backgroundColor: "#E9E9E9",
+    width: width * 0.94,
+    height: width * 0.3,
+    borderRadius: 30,
+    display:'flex',
+    flexDirection:'row',
+    gap:10
+  },
+ BoxItems:{
+    flex:1,
+    display:'flex',
+    flexDirection:'column',
+    borderColor:'black',
+    
+    justifyContent:'center',
+    alignItems:'center'
+ }
 });

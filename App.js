@@ -45,6 +45,7 @@ export default function App() {
  else{
   return (
     <>
+   
     <NavigationContainer>
      <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="home"  component={Home}/>
