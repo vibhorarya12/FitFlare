@@ -6,8 +6,7 @@ import {
   Dimensions,
   Switch,
   TouchableOpacity,
-  ImageBackground
- 
+  ImageBackground,
 } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -30,88 +29,108 @@ const Weight = () => {
     setSelectedWeight(data);
   }, []);
   const handleButton = () => {
-    navigation.navigate('Height');
+    navigation.navigate("Height");
   };
   return (
     <View style={styles.container}>
-      <ImageBackground style={{flex:1}} resizeMode="cover" source={require('../../assets/backgroundImages/fit.jpg')}>
-      <View style={styles.textContainer}>
-        <Text
-          style={{ color: "white", fontSize: width * 0.07, fontWeight: "bold" }}
-        >
-          Your Current Weight?
-        </Text>
-        <View style={styles.WeightContainer}>
-          <View style={styles.switchContainer}>
-            <Text
-              style={{
-                color: "white",
-                fontSize: width * 0.06,
-                fontWeight: "bold",
-                opacity: isKilogram ? 0.3 : 1,
-              }}
-            >
-              Lbs
-            </Text>
-            <Switch
-              style={{ transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }] }}
-              trackColor={{ false: "#ea2b04", true: "#ea2b04" }}
-              thumbColor={"white"}
-              onValueChange={handleSwitch}
-              value={isKilogram}
-            />
-            <Text
-              style={{
-                color: "white",
-                fontSize: width * 0.06,
-                fontWeight: "bold",
-                opacity: !isKilogram ? 0.3 : 1,
-              }}
-            >
-              Kg
-            </Text>
-          </View>
-          <View style={styles.wheelScrollerContainer}>
-            <View style={styles.wheelScroller}>
-              <ScrollPicker
-                dataSource={isKilogram ? kgData : lbsData}
-                selectedIndex={1}
-                renderItem={(data, index) => (
-                  <MemoizedPickerItem key={index} data={data} />
-                )}
-                onValueChange={handleValueChange}
-                wrapperHeight={height * 0.5}
-                wrapperBackground="transparent"
-                itemHeight={60}
-                highlightColor="#ea2b04"
-                highlightBorderWidth={2}
-              />
-            </View>
-            <View style={styles.weightValue}>
+      <ImageBackground
+        style={{ flex: 1 }}
+        resizeMode="cover"
+        source={require("../../assets/backgroundImages/fit.jpg")}
+      >
+        <View style={styles.textContainer}>
+          <Text
+            style={{
+              color: "white",
+              fontSize: width * 0.07,
+              fontWeight: "bold",
+              textShadowColor: "rgba(0, 0, 0, 0.8)",
+              textShadowOffset: { width: 3, height: 2 },
+              textShadowRadius: 6,
+            }}
+          >
+            Your Current Weight?
+          </Text>
+          <View style={styles.WeightContainer}>
+            <View style={styles.switchContainer}>
               <Text
                 style={{
-                  color: "#ea2b04",
-                  fontSize: width * 0.08,
+                  color: "white",
+                  fontSize: width * 0.06,
                   fontWeight: "bold",
+                  opacity: isKilogram ? 0.3 : 1,
+                  textShadowColor: "rgba(0, 0, 0, 0.8)",
+                  textShadowOffset: { width: 3, height: 2 },
+                  textShadowRadius: 6,
                 }}
               >
-                {selectedWeight
-                  ? selectedWeight + (isKilogram ? " Kg" : " Lbs")
-                  : ""}
+                Lbs
+              </Text>
+              <Switch
+                style={{ transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }] }}
+                trackColor={{ false: "#ea2b04", true: "#ea2b04" }}
+                thumbColor={"white"}
+                onValueChange={handleSwitch}
+                value={isKilogram}
+              />
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: width * 0.06,
+                  fontWeight: "bold",
+                  opacity: !isKilogram ? 0.3 : 1,
+                  textShadowColor: "rgba(0, 0, 0, 0.8)",
+                  textShadowOffset: { width: 3, height: 2 },
+                  textShadowRadius: 6,
+                }}
+              >
+                Kg
               </Text>
             </View>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button} onPress={handleButton}>
-                <Ionicons
-                  name="arrow-forward-outline"
-                  size={width * 0.08}
-                  color="#ea2b04"
+            <View style={styles.wheelScrollerContainer}>
+              <View style={styles.wheelScroller}>
+                <ScrollPicker
+                  dataSource={isKilogram ? kgData : lbsData}
+                  selectedIndex={1}
+                  renderItem={(data, index) => (
+                    <MemoizedPickerItem key={index} data={data} />
+                  )}
+                  onValueChange={handleValueChange}
+                  wrapperHeight={height * 0.5}
+                  wrapperBackground="transparent"
+                  itemHeight={60}
+                  highlightColor="#ea2b04"
+                  highlightBorderWidth={2}
                 />
-              </TouchableOpacity>
+              </View>
+              <View style={styles.weightValue}>
+                <Text
+                  style={{
+                    color: "#eb3349",
+                    fontSize: width * 0.08,
+                    fontWeight: "bold",
+                    textShadowColor: "rgba(0, 0, 0, 0.8)",
+                    textShadowOffset: { width: 3, height: 2 },
+                    textShadowRadius: 6,
+                  }}
+                >
+                  {selectedWeight
+                    ? selectedWeight + (isKilogram ? " Kg" : " Lbs")
+                    : ""}
+                </Text>
+              </View>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={handleButton}>
+                  <Ionicons
+                    name="arrow-forward-outline"
+                    size={width * 0.1}
+                    color="#ea2b04"
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
-      </View>
       </ImageBackground>
     </View>
   );
@@ -190,16 +209,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 
-    backgroundColor: "transparent",
+    backgroundColor: "white",
+    borderRadius: 20,
+    elevation: 5,
   },
   item: {
-    height: height*0.05,
+    height: height * 0.05,
     justifyContent: "center",
     alignItems: "center",
   },
   itemText: {
-    fontSize: 18,
+    fontSize: width * 0.06,
     color: "white",
+    textShadowColor: "rgba(0, 0, 0, 0.8)",
+    textShadowOffset: { width: 3, height: 2 },
+    textShadowRadius: 6,
   },
 });
 
