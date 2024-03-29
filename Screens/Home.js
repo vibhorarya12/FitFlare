@@ -5,7 +5,6 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
@@ -17,24 +16,26 @@ export default function Home() {
     <View style={styles.container}>
       <View style={styles.ProgressContainer}>
         <View style={styles.tabBarContainer}>
-          <Ionicons
-            name="accessibility"
-            size={width * 0.07}
-            color="#841DAD"
-            style={{
-              paddingHorizontal: width * 0.03,
-              paddingVertical: width * 0.02,
-            }}
-          />
+          <TouchableOpacity>
+            <Ionicons
+              name="accessibility"
+              size={width * 0.07}
+              color="#841DAD"
+              style={{
+                paddingHorizontal: width * 0.03,
+                paddingVertical: width * 0.02,
+              }}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.CircularProgress}>
           <CircularProgress
-            value={1000}
+            value={1700}
             radius={width * 0.35}
             duration={1500}
             progressValueColor={"black"}
             progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
-            maxValue={5000}
+            maxValue={3000}
             title={"Steps today"}
             titleColor={"black"}
             titleStyle={{
@@ -44,34 +45,55 @@ export default function Home() {
             }}
             activeStrokeWidth={width * 0.05}
             inActiveStrokeWidth={width * 0.02}
+            activeStrokeColor={'#ff5f6d'}
+            activeStrokeSecondaryColor={'#ffc371'}
+            
           />
         </View>
         <View style={styles.stats}>
           <View style={styles.statsItem}>
             <Ionicons name="fitness" size={width * 0.1} color="#CD2331" />
             <Text style={{ fontSize: width * 0.04 }}>300 Kcal</Text>
-            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: width * 0.04,
+                opacity: 0.7,
+              }}
+            >
               Calories
             </Text>
           </View>
           <View style={styles.statsItem}>
             <Ionicons name="pie-chart" size={width * 0.1} color="#118AB2" />
             <Text style={{ fontSize: width * 0.04 }}>45%</Text>
-            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: width * 0.04,
+                opacity: 0.7,
+              }}
+            >
               Today's goal
             </Text>
           </View>
           <View style={styles.statsItem}>
             <Ionicons name="walk" size={width * 0.1} color="#EAC435" />
             <Text style={{ fontSize: width * 0.04 }}>6Km</Text>
-            <Text style={{ fontWeight: "bold", fontSize: width * 0.03 }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: width * 0.04,
+                opacity: 0.7,
+              }}
+            >
               Distance
             </Text>
           </View>
         </View>
       </View>
       <View style={styles.FeatureContainer}>
-        <View style={styles.waterIntakeBox}>
+        <TouchableOpacity style={styles.waterIntakeBox}>
           <LottieView
             source={require("../assets/animations/running.json")}
             autoPlay
@@ -89,8 +111,8 @@ export default function Home() {
           >
             Your monthly stats
           </Text>
-        </View>
-        <View style={styles.monthlyStatsBox}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.monthlyStatsBox}>
           <LottieView
             source={require("../assets/animations/intake.json")}
             autoPlay
@@ -108,47 +130,55 @@ export default function Home() {
           >
             Water intake reminder
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.extraConatiner}>
         <View style={styles.extraBox}>
           <View style={styles.BoxItems}>
             <TouchableOpacity>
-          <Ionicons name="scale" size={width * 0.11} color="#5B2A86" />
-          </TouchableOpacity>
-          <Text style={{
-             
-              alignSelf: "center",
-              fontWeight: "bold",
-              fontSize: width * 0.035,
-              opacity: 0.6,
-            }} >Track Calories</Text>
+              <Ionicons name="scale" size={width * 0.11} color="#5B2A86" />
+            </TouchableOpacity>
+            <Text
+              style={{
+                alignSelf: "center",
+                fontWeight: "bold",
+                fontSize: width * 0.035,
+                opacity: 0.6,
+              }}
+            >
+              Track Calories
+            </Text>
           </View>
           <View style={styles.BoxItems}>
-          <TouchableOpacity>
-          <Ionicons name="footsteps" size={width * 0.11} color="#FF6978" />
-          </TouchableOpacity>
-          <Text style={{
-             
-              alignSelf: "center",
-              fontWeight: "bold",
-              fontSize: width * 0.035,
-              opacity: 0.6,
-            }} >Set Goal</Text>
+            <TouchableOpacity>
+              <Ionicons name="footsteps" size={width * 0.11} color="#FF6978" />
+            </TouchableOpacity>
+            <Text
+              style={{
+                alignSelf: "center",
+                fontWeight: "bold",
+                fontSize: width * 0.035,
+                opacity: 0.6,
+              }}
+            >
+              Set Goal
+            </Text>
           </View>
           <View style={styles.BoxItems}>
-          <TouchableOpacity>
-          <Ionicons name="timer" size={width * 0.11} color="#03045E" />
-          </TouchableOpacity>
-          <Text style={{
-             
-              alignSelf: "center",
-              fontWeight: "bold",
-              fontSize: width * 0.035,
-              opacity: 0.6,
-            }} >Quick session</Text>
+            <TouchableOpacity>
+              <Ionicons name="timer" size={width * 0.11} color="#03045E" />
+            </TouchableOpacity>
+            <Text
+              style={{
+                alignSelf: "center",
+                fontWeight: "bold",
+                fontSize: width * 0.035,
+                opacity: 0.6,
+              }}
+            >
+              Quick session
+            </Text>
           </View>
-         
         </View>
       </View>
     </View>
@@ -255,17 +285,16 @@ const styles = StyleSheet.create({
     width: width * 0.94,
     height: width * 0.3,
     borderRadius: 30,
-    display:'flex',
-    flexDirection:'row',
-    gap:10
+    display: "flex",
+    flexDirection: "row",
+    gap: 10,
   },
- BoxItems:{
-    flex:1,
-    display:'flex',
-    flexDirection:'column',
-    borderColor:'black',
-    
-    justifyContent:'center',
-    alignItems:'center'
- }
+  BoxItems: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    borderColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
