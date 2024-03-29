@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
+  ImageBackground,
   
 } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
@@ -17,6 +18,7 @@ export default function Age() {
   };
   return (
     <View style={styles.container}>
+      <ImageBackground style={{flex:1}} resizeMode="cover" source={require('../../assets/backgroundImages/shoes.jpg')}>
       <View style={styles.textContainer}>
         <Text
           style={{ color: "white", fontSize: width * 0.07, fontWeight: "bold" }}
@@ -36,7 +38,7 @@ export default function Age() {
             )}
             onValueChange={(data, selectedIndex) => setAgeValue(data)}
             wrapperHeight={height * 0.5} // Adjust this value as needed
-            wrapperBackground="black"
+            wrapperBackground="transparent"
             itemHeight={60}
             highlightColor="#ea2b04"
             highlightBorderWidth={2}
@@ -65,6 +67,7 @@ export default function Age() {
           </View>
         </TouchableOpacity>
       </View>
+      </ImageBackground>
     </View>
   );
 }

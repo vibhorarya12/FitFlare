@@ -5,9 +5,11 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  ImageBackground
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+
 const { height, width } = Dimensions.get("window");
 
 export default function Gender() {
@@ -15,9 +17,10 @@ export default function Gender() {
   const [selectedGender, setSelectedGender] = useState(null);
   return (
     <View style={styles.container}>
+      <ImageBackground style={{flex:1}} resizeMode="cover" source={require('../../assets/backgroundImages/pic.jpg')}>
       <View style={styles.textConatiner}>
         <Text
-          style={{ color: "white", fontSize: width * 0.08, fontWeight: "bold" }}
+          style={{ color: "white", fontSize: width * 0.08, fontWeight: "bold"  }}
         >
           You are ?
         </Text>
@@ -65,6 +68,7 @@ export default function Gender() {
           </TouchableOpacity>
         ) : null}
       </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -86,6 +90,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     alignItems: "center",
     flexDirection: "column",
+    justifyContent:'center',
     gap: width * 0.03,
   },
   buttonContainer: {

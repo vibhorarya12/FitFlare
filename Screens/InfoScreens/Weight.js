@@ -6,6 +6,7 @@ import {
   Dimensions,
   Switch,
   TouchableOpacity,
+  ImageBackground
  
 } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
@@ -33,6 +34,7 @@ const Weight = () => {
   };
   return (
     <View style={styles.container}>
+      <ImageBackground style={{flex:1}} resizeMode="cover" source={require('../../assets/backgroundImages/fit.jpg')}>
       <View style={styles.textContainer}>
         <Text
           style={{ color: "white", fontSize: width * 0.07, fontWeight: "bold" }}
@@ -79,7 +81,7 @@ const Weight = () => {
                 )}
                 onValueChange={handleValueChange}
                 wrapperHeight={height * 0.5}
-                wrapperBackground="black"
+                wrapperBackground="transparent"
                 itemHeight={60}
                 highlightColor="#ea2b04"
                 highlightBorderWidth={2}
@@ -110,6 +112,7 @@ const Weight = () => {
           </View>
         </View>
       </View>
+      </ImageBackground>
     </View>
   );
 };
