@@ -166,7 +166,7 @@ export default function Home() {
           </View>
           <View style={styles.BoxItems}>
             <TouchableOpacity>
-              <Ionicons name="timer" size={width * 0.11} color="#03045E" />
+              <Ionicons name="timer" size={width * 0.11} color="#D62828"  />
             </TouchableOpacity>
             <Text
               style={{
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#E1E6E1",
     flexDirection: "column",
   },
   ProgressContainer: {
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     justifyContent: "flex-end",
     borderRadius: 20,
-    backgroundColor: "#E9E9E9",
+    backgroundColor: "#E1E6E1",
   },
 
   CircularProgress: {
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginLeft: width * 0.03,
     borderRadius: 20,
-    backgroundColor: "#E9E9E9",
+    backgroundColor: "#D3C5E5",
     display: "flex",
     flexDirection: "column",
   },
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginRight: width * 0.03,
     borderRadius: 20,
-    backgroundColor: "#E9E9E9",
+    backgroundColor: "#D3C5E5",
     display: "flex",
     flexDirection: "column",
   },
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   extraBox: {
-    backgroundColor: "#E9E9E9",
+    backgroundColor: "#D3C5E5",
     width: width * 0.94,
     height: width * 0.3,
     borderRadius: 30,

@@ -8,9 +8,10 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 const Tab = createMaterialTopTabNavigator();
 
+
 export default function UserInfoBoarding() {
   return (
-    <Tab.Navigator  initialRouteName='Gender' screenOptions={{tabBarShowLabel:false,tabBarStyle:{display:'none'}}} backBehavior={'order'}  >
+    <Tab.Navigator  initialRouteName='Gender' screenOptions={{tabBarShowLabel:false,tabBarStyle:{display:'none'}, swipeEnabled:false}} backBehavior={'order'}  >
      <Tab.Screen  name='Gender' component={Gender}  />
      <Tab.Screen  name='Weight' component={Weight} />
      <Tab.Screen  name='Height' component={Height} />
