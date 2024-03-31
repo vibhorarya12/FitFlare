@@ -10,6 +10,7 @@ import {
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+
 const { width, height } = Dimensions.get("window");
 
 export default function Height() {

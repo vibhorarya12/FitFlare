@@ -9,9 +9,11 @@ import {
 import LottieView from "lottie-react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 
 export default function Home() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.ProgressContainer}>
@@ -45,9 +47,8 @@ export default function Home() {
             }}
             activeStrokeWidth={width * 0.05}
             inActiveStrokeWidth={width * 0.02}
-            activeStrokeColor={'#ff5f6d'}
-            activeStrokeSecondaryColor={'#ffc371'}
-            
+            activeStrokeColor={"#ff5f6d"}
+            activeStrokeSecondaryColor={"#ffc371"}
           />
         </View>
         <View style={styles.stats}>
@@ -93,9 +94,9 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.FeatureContainer}>
-        <TouchableOpacity style={styles.waterIntakeBox}>
+        <TouchableOpacity style={styles.waterIntakeBox} onPress={()=>navigation.navigate('monthly-screen')}>
           <LottieView
-            source={require("../assets/animations/running.json")}
+            source={require("../../assets/animations/running.json")}
             autoPlay
             loop
             style={{ flex: 7 }}
@@ -114,7 +115,7 @@ export default function Home() {
         </TouchableOpacity>
         <TouchableOpacity style={styles.monthlyStatsBox}>
           <LottieView
-            source={require("../assets/animations/intake.json")}
+            source={require("../../assets/animations/intake.json")}
             autoPlay
             loop
             style={{ flex: 7 }}
@@ -166,7 +167,7 @@ export default function Home() {
           </View>
           <View style={styles.BoxItems}>
             <TouchableOpacity>
-              <Ionicons name="timer" size={width * 0.11} color="#D62828"  />
+              <Ionicons name="timer" size={width * 0.11} color="#D62828" />
             </TouchableOpacity>
             <Text
               style={{

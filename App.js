@@ -7,7 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import UserInfoBoarding from "./Screens/UserInfo";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { getItem } from "./Utils/asyncStorage";
-import Home from "./Screens/Home";
+import DashBoardScreen from "./Screens/Dashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,7 +48,7 @@ export default function App() {
    
     <NavigationContainer>
      <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="home"  component={Home}/>
+      <Stack.Screen name="home"  component={DashBoardScreen}/>
       <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
      </Stack.Navigator>
     </NavigationContainer>
