@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Dimensions,  Text ,TouchableOpacity } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { LinearGradient } from "expo-linear-gradient";
+import {Bar}  from 'react-native-progress';
 const { width, height } = Dimensions.get("window");
 export default function MonthlyStatsScreen() {
   return (
@@ -118,7 +119,16 @@ export default function MonthlyStatsScreen() {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.StatsContainer}></View>
+      <View style={styles.StatsContainer}>
+       
+
+        <View style={styles.BarContainers}>
+                 <Bar borderWidth={0} animated={true} progress={0.3} width={500} color="red"/>
+        </View>
+        <View style={styles.BarContainers}></View>
+        <View style={styles.BarContainers}></View>
+        <View style={styles.BarContainers}></View>
+      </View>
     </View>
   );
 }
@@ -173,7 +183,17 @@ const styles = StyleSheet.create({
   },
   StatsContainer: {
     borderColor: "black",
-    // borderWidth: 2,
+    borderWidth: 2,
     flex: 5,
+    flexDirection:'column'
   },
+  BarContainers:{
+    borderColor: "black",
+    borderWidth: 2,
+    display:'flex',
+    flexDirection:'row',
+    flex :1,
+    justifyContent:'center',
+
+  }
 });
