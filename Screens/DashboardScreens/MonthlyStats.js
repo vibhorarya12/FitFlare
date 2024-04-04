@@ -14,6 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 export default function MonthlyStatsScreen() {
   return (
     <View style={styles.container}>
+      <View style={styles.HeaderContainer}></View>
       <View style={styles.GraphContainer}>
         <View style={styles.GraphBox}>
           <LineChart
@@ -118,9 +119,93 @@ export default function MonthlyStatsScreen() {
         </View>
       </View>
       <View style={styles.StatsContainer}>
+        <View
+          style={[
+            styles.BarContainers,
+            { flex: 0.5, justifyContent: "flex-end", flexDirection: "column" },
+          ]}
+        >
+          <Text
+            style={{
+              color: "black",
+              fontSize: width * 0.055,
+              fontWeight: "bold",
+              opacity: 0.7,
+            }}
+          >
+            Last 7 Days
+          </Text>
+        </View>
         <View style={styles.BarContainers}>
-          <View style={{ borderColor:'black' , flex:3 , justifyContent:'center', alignItems:'center'}}>
-          <Ionicons name="fitness" size={width * 0.1} color="#CD2331" />
+          <View
+            style={{
+              borderColor: "black",
+              flex: 2,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name="fitness" size={width * 0.1} color="#CD2331" />
+          </View>
+          <Bar
+            borderWidth={0}
+            animated={true}
+            progress={0.6}
+            borderRadius={10}
+            height={20}
+            width={500}
+            color="#CD2331"
+            style={{
+              height: 20,
+              borderWidth: 1,
+              borderColor: "transparent",
+              flex: 8,
+              marginRight: width * 0.05,
+              elevation: 2,
+            }}
+            unfilledColor="#CFC7D2"
+          />
+        </View>
+        <View style={styles.BarContainers}>
+          <View
+            style={{
+              borderColor: "black",
+              flex: 2,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name="bicycle" size={width * 0.1} color="#52489C" />
+          </View>
+          <Bar
+            borderWidth={0}
+            animated={true}
+            progress={0.9}
+            borderRadius={10}
+            height={20}
+            width={500}
+            color="#52489C"
+            style={{
+              height: 20,
+              borderWidth: 1,
+              borderColor: "transparent",
+              flex: 8,
+              marginRight: width * 0.05,
+              elevation: 2,
+            }}
+            unfilledColor="#CFC7D2"
+          />
+        </View>
+        <View style={styles.BarContainers}>
+          <View
+            style={{
+              borderColor: "black",
+              flex: 2,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name="water" size={width * 0.1} color="#3DA5D9" />
           </View>
           <Bar
             borderWidth={0}
@@ -129,15 +214,19 @@ export default function MonthlyStatsScreen() {
             borderRadius={10}
             height={20}
             width={500}
-            color="red"
-            style={{height:20, borderWidth:1, borderColor:'green', flex:7, marginRight:width*0.05}}
+            color="#3DA5D9"
+            style={{
+              height: 20,
+              borderWidth: 1,
+              borderColor: "transparent",
+              flex: 8,
+              marginRight: width * 0.05,
+              elevation: 3,
+            }}
+            unfilledColor="#CFC7D2"
           />
         </View>
-        <View style={styles.BarContainers}>
-          
-        </View>
-        <View style={styles.BarContainers}></View>
-        <View style={styles.BarContainers}></View>
+        
       </View>
     </View>
   );
@@ -150,11 +239,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#E1E6E1",
     flexDirection: "column",
   },
+  HeaderContainer:{
+    marginTop: width * 0.15,
+    borderColor: "black",
+    borderWidth: 2,
+    flex: 1,
+  },
   GraphContainer: {
     borderColor: "black",
     // borderWidth: 2,
     flex: 5,
-    marginTop: width * 0.15,
+    
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
@@ -190,17 +285,17 @@ const styles = StyleSheet.create({
   },
   StatsContainer: {
     borderColor: "black",
-    borderWidth: 2,
-    flex: 5,
+
+    flex: 4,
     flexDirection: "column",
   },
   BarContainers: {
     borderColor: "black",
-    borderWidth: 2,
+    // borderWidth: 1,
     display: "flex",
     flexDirection: "row",
     flex: 1,
     justifyContent: "center",
-    alignItems:'center'
+    alignItems: "center",
   },
 });
