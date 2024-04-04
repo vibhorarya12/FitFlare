@@ -14,7 +14,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 export default function MonthlyStatsScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.HeaderContainer}></View>
+      <View style={styles.HeaderContainer}>
+      <View style={styles.headerBox}>
+      <Ionicons name="analytics" size={width * 0.18} color="#CB793A"  />
+      <Text style={{fontSize:width*0.06, fontWeight:'bold', opacity:0.6}}>Your Monthly Stats</Text>
+      </View>
+      </View>
       <View style={styles.GraphContainer}>
         <View style={styles.GraphBox}>
           <LineChart
@@ -240,10 +245,26 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   HeaderContainer:{
-    marginTop: width * 0.15,
+    marginTop: width * 0.14,
     borderColor: "black",
-    borderWidth: 2,
+    // borderWidth: 2,
     flex: 1,
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  headerBox:{
+    flex:1,
+    flexDirection:'row',
+    borderColor:'black',
+    width:width*0.95,
+    justifyContent:'center',
+    alignItems:'center',
+    gap:5,
+    backgroundColor: "#D3C5E5",
+    borderRadius:20,
+    elevation:5
   },
   GraphContainer: {
     borderColor: "black",
