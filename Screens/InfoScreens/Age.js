@@ -9,12 +9,14 @@ import {
 } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 
 export default function Age() {
+  const navigation = useNavigation();
   const [ageValue, setAgeValue] = useState("15");
   const handleButton = () => {
-    //  console.log("button prerssed");
+     navigation.navigate('dashboard');
   };
   return (
     <View style={styles.container}>

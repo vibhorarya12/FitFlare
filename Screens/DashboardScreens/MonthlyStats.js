@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -11,26 +11,26 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Bar } from "react-native-progress";
 const { width, height } = Dimensions.get("window");
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { weeklyData, monthlyData } from "../../Utils/Data";
+
 export default function MonthlyStatsScreen() {
+  const [Data, setData] = useState(weeklyData);
   return (
     <View style={styles.container}>
       <View style={styles.HeaderContainer}>
-      <View style={styles.headerBox}>
-      <Ionicons name="analytics" size={width * 0.18} color="#CB793A"  />
-      <Text style={{fontSize:width*0.06, fontWeight:'bold', opacity:0.6}}>Your Monthly Stats</Text>
-      </View>
+        <View style={styles.headerBox}>
+          <Ionicons name="analytics" size={width * 0.16} color="#CB793A" />
+          <Text
+            style={{ fontSize: width * 0.05, fontWeight: "bold", opacity: 0.6 }}
+          >
+            Your Monthly Stats
+          </Text>
+        </View>
       </View>
       <View style={styles.GraphContainer}>
         <View style={styles.GraphBox}>
           <LineChart
-            data={{
-              labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], // x axis
-              datasets: [
-                {
-                  data: [5, 10, 17, 14, 7, 20, 35],
-                },
-              ],
-            }}
+            data={Data}
             width={Dimensions.get("window").width * 0.98} // from react-native
             height={width * 0.61}
             yAxisSuffix="-stps"
@@ -81,7 +81,10 @@ export default function MonthlyStatsScreen() {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={{ backgroundColor: "transparent" }}>
+          <TouchableOpacity
+            style={{ backgroundColor: "transparent" }}
+            onPress={() => setData(weeklyData)}
+          >
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -101,7 +104,10 @@ export default function MonthlyStatsScreen() {
               </Text>
             </LinearGradient>
           </TouchableOpacity>
-          <TouchableOpacity style={{ backgroundColor: "transparent" }}>
+          <TouchableOpacity
+            style={{ backgroundColor: "transparent" }}
+            onPress={() => setData(monthlyData)}
+          >
             <LinearGradient
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -231,7 +237,6 @@ export default function MonthlyStatsScreen() {
             unfilledColor="#CFC7D2"
           />
         </View>
-        
       </View>
     </View>
   );
@@ -244,33 +249,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#E1E6E1",
     flexDirection: "column",
   },
-  HeaderContainer:{
-    marginTop: width * 0.14,
+  HeaderContainer: {
+    marginTop: width * 0.02,
     borderColor: "black",
     // borderWidth: 2,
     flex: 1,
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'center',
-    alignItems:'center'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  headerBox:{
-    flex:1,
-    flexDirection:'row',
-    borderColor:'black',
-    width:width*0.95,
-    justifyContent:'center',
-    alignItems:'center',
-    gap:5,
+  headerBox: {
+    flex: 1,
+    flexDirection: "row",
+    borderColor: "black",
+    width: width * 0.95,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 5,
     backgroundColor: "#D3C5E5",
-    borderRadius:20,
-    elevation:5
+    borderRadius: 20,
+    elevation: 5,
   },
   GraphContainer: {
     borderColor: "black",
     // borderWidth: 2,
     flex: 5,
-    
+
     justifyContent: "center",
     alignItems: "center",
     display: "flex",

@@ -14,7 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 
 export default function Height() {
-  const [heightValue, setHeightVlaue] = useState("26");
+  const [heightValue, setHeightVlaue] = useState("83");
   const navigation = useNavigation();
   const handleButton = () => {
     navigation.navigate("Age");
@@ -43,7 +43,7 @@ export default function Height() {
         <View style={styles.heightContainer}>
           <View style={styles.wheelScroller}>
             <ScrollPicker
-              dataSource={Array.from({ length: 230 }, (_, index) => index + 25)}
+              dataSource={Array.from({ length: 230 }, (_, index) => index + 80)}
               selectedIndex={1}
               renderItem={(data, index) => (
                 <TouchableOpacity key={index} style={styles.item}>

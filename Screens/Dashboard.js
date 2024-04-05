@@ -1,19 +1,17 @@
 import React from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Home from './DashboardScreens/Home';
 import MonthlyStatsScreen from './DashboardScreens/MonthlyStats';
+import WaterReminder from './DashboardScreens/WaterReminder';
 
-
-
-const Tab = createMaterialTopTabNavigator();
-
+const Stack = createStackNavigator();
 
 export default function DashBoardScreen() {
   return (
-    <Tab.Navigator  initialRouteName='Home' screenOptions={{tabBarShowLabel:false,tabBarStyle:{display:'none'}, swipeEnabled:false}} backBehavior={'order'}  >
-     <Tab.Screen  name='Home' component={Home}  />
-     <Tab.Screen  name='monthly-screen' component={MonthlyStatsScreen}  />
-    
-    </Tab.Navigator>
-  )
+    <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen  name='monthly-screen' component={MonthlyStatsScreen} />
+      <Stack.Screen name='water-reminder' component={WaterReminder} />
+    </Stack.Navigator>
+  );
 }

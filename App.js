@@ -13,49 +13,60 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
  const [showOnboarding, setShowOnboarding] = useState(null);
- useEffect(()=>{
+//  useEffect(()=>{
 
-    AlreadyBoarded();
- },[])
- const AlreadyBoarded = async ()=>{
-  let onBoarded = await getItem("onboarded");
+//     AlreadyBoarded();
+//  },[])
+//  const AlreadyBoarded = async ()=>{
+//   let onBoarded = await getItem("onboarded");
 
-  if(onBoarded==1){
-     setShowOnboarding(false);
-  }
-  else{
-        setShowOnboarding(true);
-  }
- }
+//   if(onBoarded==1){
+//      setShowOnboarding(false);
+//   }
+//   else{
+//         setShowOnboarding(true);
+//   }
+//  }
 
- if(showOnboarding==null) return null;
+//  if(showOnboarding==null) return null;
 
- if(showOnboarding){
-  return (
-    <>
-    <NavigationContainer>
-     <Stack.Navigator initialRouteName="onboard" screenOptions={{headerShown:false}}>
-      <Stack.Screen name="onboard"  component={OnBoardingScreen}/>
-      <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
-     </Stack.Navigator>
-    </NavigationContainer>
-     </>
-  );
- }
- else{
-  return (
-    <>
+//  if(showOnboarding){
+//   return (
+//     <>
+//     <NavigationContainer>
+//      <Stack.Navigator initialRouteName="onboard" screenOptions={{headerShown:false}}>
+//       <Stack.Screen name="onboard"  component={OnBoardingScreen}/>
+//       <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
+//      </Stack.Navigator>
+//     </NavigationContainer>
+//      </>
+//   );
+//  }
+//  else{
+//   return (
+//     <>
    
-    <NavigationContainer>
-     <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="home"  component={DashBoardScreen}/>
-      <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
-     </Stack.Navigator>
-    </NavigationContainer>
-     </>
-  );
- }
+//     <NavigationContainer>
+//      <Stack.Navigator screenOptions={{headerShown:false}}>
+//       <Stack.Screen name="home"  component={DashBoardScreen}/>
+//       <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
+//      </Stack.Navigator>
+//     </NavigationContainer>
+//      </>
+//   );
+//  }
  
+
+return (
+      <>
+      <NavigationContainer>
+       <Stack.Navigator  screenOptions={{headerShown:false}}>
+       
+        <Stack.Screen name="dashboard"  component={DashBoardScreen}/>
+       </Stack.Navigator>
+      </NavigationContainer>
+       </>
+    );
 }
 
 const styles = StyleSheet.create({
