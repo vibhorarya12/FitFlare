@@ -12,18 +12,19 @@ import CircularProgress from "react-native-circular-progress-indicator";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+
 const { width, height } = Dimensions.get("window");
 
 export default function Home() {
   const navigation = useNavigation();
   const sheetRef = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
-  const snapPoints = ["75%"];
+  const snapPoints = ["80%"];
   const handlePress = useCallback((index) => {
-      sheetRef.current?.snapToIndex(index);
-      setIsOpen(true);
-    }, []);
-    
+    sheetRef.current?.snapToIndex(index);
+    setIsOpen(true);
+  }, []);
+
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -209,18 +210,38 @@ export default function Home() {
           enablePanDownToClose={true}
           onClose={() => setIsOpen(false)}
           index={-1}
-          backgroundStyle={{borderTopLeftRadius:width*0.15 , borderTopRightRadius:width*0.15, elevation:5, backgroundColor:'#B8D0EB'}}
+          backgroundStyle={{
+            borderTopLeftRadius: width * 0.15,
+            borderTopRightRadius: width * 0.15,
+            elevation: 5,
+            backgroundColor: "#B8D0EB",
+          }}
         >
-          <BottomSheetView  style={styles.BottomSheetView} >
+          <BottomSheetView style={styles.BottomSheetView}>
             <View style={styles.animationContainer}>
-            <LottieView
-              source={require("../../assets/animations/diet.json")}
-              autoPlay
-              loop
-              style={{ flex: 1 , width:width*0.6 }} />
+            <CircularProgress
+              value={400}
+              radius={width * 0.35}
+              duration={1500}
+              progressValueColor={"black"}
+              progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
+              maxValue={2400}
+              title={"ml / 2400 ml"}
+              titleColor={"black"}
+              titleStyle={{
+                fontWeight: "bold",
+                fontSize: width * 0.05,
+                opacity: 0.7,
+              }}
+              activeStrokeWidth={width * 0.05}
+              inActiveStrokeWidth={width * 0.015}
+              activeStrokeColor={"#2E3192"}
+              activeStrokeSecondaryColor={"#1BFFFF"}
+              
+            />
             </View>
             <View style={styles.WaterSelectorBox}>
-
+              
             </View>
           </BottomSheetView>
         </BottomSheet>
@@ -341,28 +362,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  BottomSheetView:{
-    flex:1,
-    display:'flex',
+  BottomSheetView: {
+    flex: 1,
+    display: "flex",
     // borderWidth:1,
-    borderColor:'black',
-   flexDirection:'column',
-   justifyContent:'center',
-   alignItems:'center'
+    borderColor: "black",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  animationContainer:{
-    flex:5,
-    // borderWidth:1,
-    borderColor:'black',
-    width:width*0.75,
-    justifyContent:'center',
-    alignItems:'center'
-    
+  animationContainer: {
+    flex: 5,
+    // borderWidth: 1,
+    borderColor: "black",
+    width: width * 0.75,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  WaterSelectorBox:{
-    flex:5,
-    // borderWidth:1,
-    borderColor:'black',
-    width:width*0.75
-  }
+  WaterSelectorBox: {
+    flex: 5,
+    borderWidth: 1,
+    borderColor: "black",
+    width: width * 0.9,
+  },
 });
