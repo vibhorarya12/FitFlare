@@ -7,7 +7,9 @@ export default function WaterReminder (){
            <View style={styles.ProgressContainer}>
            
            </View>
-           <View style={styles.ReminderSetter}></View>
+           <View style={styles.ReminderSetter}>
+            
+           </View>
         </View>
     )
 }

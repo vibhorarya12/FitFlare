@@ -12,16 +12,9 @@ import CircularProgress from "react-native-circular-progress-indicator";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import { TextInput } from "react-native-paper";
-import { Dropdown } from "react-native-element-dropdown";
-const { width, height } = Dimensions.get("window");
-const dropDownData = [
-  { label: "100 ml", value: 100 },
-  { label: "250 ml", value: 250 },
-  { label: "400 ml", value: 400 },
-  { label: "500 ml", value: 500 },
-  { label: "1 L", value: 1000 },
-];
+import { WaterIntakeCircle, WaterSelectorBox } from "../../Src/Components/WaterIntakeComponents";
+const { width} = Dimensions.get("window");
+
 export default function Home() {
   const navigation = useNavigation();
   const sheetRef = useRef(null);
@@ -225,56 +218,8 @@ export default function Home() {
           }}
         >
           <BottomSheetView style={styles.BottomSheetView}>
-            <View style={styles.animationContainer}>
-              <CircularProgress
-                value={400}
-                radius={width * 0.35}
-                duration={1500}
-                progressValueColor={"black"}
-                progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
-                maxValue={2400}
-                title={"ml / 2400 ml"}
-                titleColor={"black"}
-                titleStyle={{
-                  fontWeight: "bold",
-                  fontSize: width * 0.05,
-                  opacity: 0.7,
-                }}
-                activeStrokeWidth={width * 0.05}
-                inActiveStrokeWidth={width * 0.015}
-                activeStrokeColor={"#2E3192"}
-                activeStrokeSecondaryColor={"#1BFFFF"}
-              />
-            </View>
-            <View style={styles.WaterSelectorBox}>
-              {/*   cup capacity box */}
-              <View style={styles.ReminderSettingsBox}>
-                <Text
-                  style={{
-                    fontSize: width * 0.045,
-                    fontWeight: "bold",
-                    marginLeft: width * 0.03,
-                    opacity: 0.8,
-                  }}
-                >
-                  Cup Capacity
-                </Text>
-                <Dropdown
-                  containerStyle={{ height: width * 0.4, width: width * 0.4 }}
-                  style={{ width: width * 0.4 }}
-                  data={dropDownData}
-                  searchPlaceholder="Search..."
-                  labelField={"label"}
-                  activeColor="#DCDCDD"
-                  itemContainerStyle={{backgroundColor:'#DCDCDD'}}
-                  
-                />
-              </View>
-              <View style={styles.ReminderSettingsBox}></View>
-              <View style={styles.ReminderSettingsBox}></View>
-              <View style={styles.ReminderSettingsBox}></View>
-              <View style={styles.ReminderSettingsBox}></View>
-            </View>
+           <WaterIntakeCircle/>
+           <WaterSelectorBox/>
           </BottomSheetView>
         </BottomSheet>
       </SafeAreaView>
@@ -403,30 +348,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  animationContainer: {
-    flex: 5,
-    // borderWidth: 1,
-    borderColor: "black",
-    width: width * 0.75,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  WaterSelectorBox: {
-    flex: 5,
-    // borderWidth: 1,
-    borderColor: "black",
-    width: width * 0.92,
-    justifyContent: "center",
-    display: "flex",
-    flexDirection: "column",
-  },
-  ReminderSettingsBox: {
-    borderColor: "black",
-    // borderWidth: 1,
-    flex: 1,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+  
 });
