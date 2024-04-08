@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Dimensions ,Alert } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { Dropdown } from "react-native-element-dropdown";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
@@ -35,12 +35,13 @@ const IntervalData = [
 export const WaterIntakeCircle = () => {
   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const onToggleSwitch = () => {setIsSwitchOn(!isSwitchOn); Alert.alert('reminder set', 'drink water stay fit')}
   return(
-  <View style={styles.animationContainer}>
+  <View style={styles.progressContainer}>
+  <View style={{flex:8, borderColor:'black'}}>
     <CircularProgress
       value={400}
-      radius={width * 0.35}
+      radius={width * 0.33}
       duration={1500}
       progressValueColor={"black"}
       progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
@@ -58,7 +59,12 @@ export const WaterIntakeCircle = () => {
       activeStrokeSecondaryColor={"#1BFFFF"}
       
     />
-    {/* <Switch color="#2E3192"  value={isSwitchOn} onValueChange={onToggleSwitch} /> */}
+    </View>
+    <View style={{flex:2 , borderColor:'black',  justifyContent:'space-around', alignItems:'center', display:'flex', flexDirection:'row',width: width * 0.75}}>
+      <Text style={styles.cupCapacityText}>set reminder</Text>
+    <Switch color="#2E3192"  value={isSwitchOn} onValueChange={onToggleSwitch} />
+    </View>
+   
   </View>)
 };
 
@@ -123,10 +129,10 @@ export const WaterSelectorBox = () => {
           onChange={(item) => setGoal(item.value)}
         />
       </View>
-      <View style={[styles.ReminderSettingsBox]}>
+      <View style={[styles.ReminderSettingsBox, {justifyContent:'center', gap:width*0.01}]}>
         <Text style={styles.cupCapacityText}>start-time</Text>
 
-      <Button mode="contained" labelStyle={{fontSize:width*0.03}}  onPress={showStartTimePicker} style={{width:width*0.28, marginRight:width*0.02, backgroundColor:'#2E3192'}} >
+      <Button mode="contained" labelStyle={{fontSize:width*0.026}}  onPress={showStartTimePicker} style={{width:width*0.25,  backgroundColor:'#2E3192'}} >
       {`${startTime.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: 'numeric',
@@ -134,19 +140,17 @@ export const WaterSelectorBox = () => {
     })}`}
     
   </Button>
-  
-
-      </View>
-      <View style={styles.ReminderSettingsBox}>
-      <Text style={styles.cupCapacityText}>end-time</Text>
-      <Button mode="contained" labelStyle={{fontSize:width*0.03}}  onPress={showEndTimePicker} style={{width:width*0.28,marginRight:width*0.02, backgroundColor:'#2E3192'}}>
+  <Text style={styles.cupCapacityText}>end-time</Text>
+  <Button mode="contained" labelStyle={{fontSize:width*0.026}}  onPress={showEndTimePicker} style={{width:width*0.25,marginRight:width*0.02, backgroundColor:'#2E3192'}}>
       {`${endTime.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: 'numeric',
       hour12: true,
     })}`}
   </Button>
+
       </View>
+    
       <View style={styles.ReminderSettingsBox}>
         <Text style={styles.cupCapacityText}>Interval</Text>
         <Dropdown
@@ -166,15 +170,17 @@ export const WaterSelectorBox = () => {
 };
 
 const styles = StyleSheet.create({
-  animationContainer: {
+  progressContainer: {
     flex: 5,
     width: width * 0.75,
     justifyContent: "center",
     alignItems: "center",
     borderColor:'black',
-   
+    
     display:'flex',
-    flexDirection:'column'
+    flexDirection:'column',
+    
+    
   },
   WaterSelectorBox: {
     flex: 5,
@@ -183,7 +189,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     borderTopLeftRadius:20,
-    marginBottom:width*0.05
+    // marginBottom:width*0.05
+    backgroundColor:'#ABC0D8',
+    borderTopRightRadius:20
   },
   ReminderSettingsBox: {
     flex: 1,
@@ -192,7 +200,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     borderColor: "black",
-   
+  //  borderWidth:0.5
+  borderTopRightRadius:20
     
   },
   cupCapacityText: {
@@ -203,4 +212,6 @@ const styles = StyleSheet.create({
   },
   dropdownContainer: { height: width * 0.4, width: width * 0.4 },
   dropdown: { width: width * 0.4, marginRight: width * 0.04 },
+
+
 });
