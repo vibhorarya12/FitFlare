@@ -19,7 +19,7 @@ export default function Home() {
   const navigation = useNavigation();
   const sheetRef = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
-  const snapPoints = ["80%"];
+  const snapPoints = ["90%"];
   const handlePress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
     setIsOpen(true);
