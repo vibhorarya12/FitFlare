@@ -201,7 +201,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "black",
   //  borderWidth:0.5,
-  borderTopRightRadius:30
+  borderTopRightRadius:30,
+  
     
   },
   cupCapacityText: {

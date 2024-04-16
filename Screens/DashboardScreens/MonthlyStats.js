@@ -16,6 +16,7 @@ import { weeklyData, monthlyData } from "../../Utils/Data";
 export default function MonthlyStatsScreen() {
   const [Data, setData] = useState(weeklyData);
   return (
+    
     <View style={styles.container}>
       <View style={styles.HeaderContainer}>
         <View style={styles.headerBox}>

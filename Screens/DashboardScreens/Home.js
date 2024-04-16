@@ -26,7 +26,7 @@ export default function Home() {
     sheetRef.current?.snapToIndex(index);
     setIsOpen(true);
   }, []);
-
+ 
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -157,7 +157,7 @@ export default function Home() {
         <View style={styles.extraConatiner}>
           <View style={styles.extraBox}>
             <View style={styles.BoxItems}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('Track-Calorie')}>
                 <Ionicons name="scale" size={width * 0.11} color="#5B2A86" />
               </TouchableOpacity>
               <Text
