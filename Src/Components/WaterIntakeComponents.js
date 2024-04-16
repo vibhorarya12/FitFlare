@@ -41,7 +41,7 @@ export const WaterIntakeCircle = () => {
   <View style={{flex:8, borderColor:'black'}}>
     <CircularProgress
       value={400}
-      radius={width * 0.33}
+      radius={width * 0.39}
       duration={1500}
       progressValueColor={"black"}
       progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
@@ -53,7 +53,7 @@ export const WaterIntakeCircle = () => {
         fontSize: width * 0.05,
         opacity: 0.7,
       }}
-      activeStrokeWidth={width * 0.05}
+      activeStrokeWidth={width * 0.06}
       inActiveStrokeWidth={width * 0.015}
       activeStrokeColor={"#2E3192"}
       activeStrokeSecondaryColor={"#1BFFFF"}
@@ -61,7 +61,7 @@ export const WaterIntakeCircle = () => {
     />
     </View>
     <View style={{flex:2 , borderColor:'black',  justifyContent:'space-around', alignItems:'center', display:'flex', flexDirection:'row',width: width * 0.75}}>
-      <Text style={styles.cupCapacityText}>set reminder</Text>
+      <Text style={styles.cupCapacityText}>Set Reminder</Text>
     <Switch color="#2E3192"  value={isSwitchOn} onValueChange={onToggleSwitch} />
     </View>
    
@@ -171,19 +171,19 @@ export const WaterSelectorBox = () => {
 
 const styles = StyleSheet.create({
   progressContainer: {
-    flex: 5,
+    flex: 1,
     width: width * 0.75,
     justifyContent: "center",
     alignItems: "center",
     borderColor:'black',
-    
+    // borderWidth:0.5,
     display:'flex',
     flexDirection:'column',
     
     
   },
   WaterSelectorBox: {
-    flex: 5,
+    flex: 9,
     width: width*0.97,
     justifyContent: "center",
     display: "flex",
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     borderColor: "black",
-  //  borderWidth:0.5
-  borderTopRightRadius:20
+  //  borderWidth:0.5,
+  borderTopRightRadius:30
     
   },
   cupCapacityText: {

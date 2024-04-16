@@ -61,8 +61,8 @@ return (
       <>
       <NavigationContainer>
        <Stack.Navigator  screenOptions={{headerShown:false}}>
-       <Stack.Screen name="onboarding"  component={OnBoardingScreen}/>
-       <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
+       {/* <Stack.Screen name="onboarding"  component={OnBoardingScreen}/> */}
+       {/* <Stack.Screen name="userinfo"  component={UserInfoBoarding}/> */}
         <Stack.Screen name="dashboard"  component={DashBoardScreen}/>
        </Stack.Navigator>
       </NavigationContainer>

@@ -6,6 +6,8 @@ import {
   Dimensions,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
+  StatusBar,
 } from "react-native";
 import LottieView from "lottie-react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
@@ -19,7 +21,7 @@ export default function Home() {
   const navigation = useNavigation();
   const sheetRef = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
-  const snapPoints = ["90%"];
+  const snapPoints = ["92%"];
   const handlePress = useCallback((index) => {
     sheetRef.current?.snapToIndex(index);
     setIsOpen(true);
@@ -28,6 +30,7 @@ export default function Home() {
   return (
     <>
       <SafeAreaView style={styles.container}>
+        <StatusBar  />
         <View style={styles.ProgressContainer}>
           <View style={styles.tabBarContainer}>
             <TouchableOpacity>
@@ -218,8 +221,10 @@ export default function Home() {
           }}
         >
           <BottomSheetView style={styles.BottomSheetView}>
+           <ScrollView contentContainerStyle={{flexGrow:1, justifyContent:'center', alignItems:'center'}} >
            <WaterIntakeCircle/>
            <WaterSelectorBox/>
+           </ScrollView>
           </BottomSheetView>
         </BottomSheet>
       </SafeAreaView>
