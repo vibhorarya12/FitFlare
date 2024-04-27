@@ -1,8 +1,21 @@
-import React from "react";
-import { View, StyleSheet, ImageBackground, Dimensions } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, ImageBackground, Dimensions , ScrollView, Text} from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
+import HorizontalPicker from "@vseslav/react-native-horizontal-picker";
 const { width } = Dimensions.get("window");
+const Items = ["Today", "This week", "This Month"];
+
+const rednerItem = (item, index) => (
+  <View style={{flex:1}}>
+    <Text style={{fontWeight: "bold",
+              fontSize: width * 0.045,
+              opacity: 0.8,}}>
+      {item}
+    </Text>
+  </View>
+);
 export default function TrackCalorie() {
+  const [selected, setSelected] = useState("Today");
   return (
     <View style={styles.container}>
       <View style={{ flex: 4 }}>
@@ -42,9 +55,19 @@ export default function TrackCalorie() {
         }}
       >
         <View style={styles.WeekContainer}>
-          
+        <HorizontalPicker
+      data={Items}
+      renderItem={rednerItem}
+      itemWidth={80}
+      onChange={(item)=> setSelected(Items[item])}
+      focusable={true}
+    />
         </View>
-        
+        <View style={[styles.WeekContainer, {height:width*0.8}]}>
+        <Text>
+          {selected}
+        </Text>
+        </View>
       </View>
     </View>
   );
@@ -61,5 +84,6 @@ const styles = StyleSheet.create({
     width: width * 0.97,
     marginTop: 10,
     borderRadius: 30,
+    elevation:5
   },
 });
