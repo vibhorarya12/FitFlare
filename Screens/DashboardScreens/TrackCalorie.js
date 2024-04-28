@@ -6,26 +6,31 @@ import {
   Dimensions,
   ScrollView,
   Text,
+  KeyboardAvoidingView
 } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
-import { Button } from "react-native-paper";
+import { Button, TextInput } from "react-native-paper";
 const { width } = Dimensions.get("window");
 
 const items = ["Today", "This Week", "This month"];
 
 const CalorieProgress = ({ completed, total }) => {
-  useEffect(() => {}, [completed, total]);
+  useEffect(() => {
 
+
+    console.log('mounted');
+  }, [total, completed]);
   return (
     <CircularProgress
       value={completed}
       radius={width * 0.28}
       duration={1500}
       progressValueColor={"black"}
-      progressValueStyle={{ fontSize: width * 0.11, opacity: 0.8 }}
+      progressValueStyle={{ fontSize: width * 0.07, opacity: 0.8 }}
       maxValue={total}
-      title={"kcal / 2400 kcal"}
+      title={`/ ${total} kcal`}
       titleColor={"black"}
+      valueSuffix=" kcal"
       titleStyle={{
         fontWeight: "bold",
         fontSize: width * 0.045,
@@ -40,24 +45,24 @@ const CalorieProgress = ({ completed, total }) => {
 };
 export default function TrackCalorie() {
   const [selected, setSelected] = useState("");
-  const [currentStats, setCurrentStats] = useState({
-    completed: 1800,
-    total: 2400,
-  });
+  const [completed, setCompleted] = useState(1800);
+  const [total, setTotal] = useState(2500);
   const handlePress = (query) => {
-    
     if (query === "This Week") {
-      setCurrentStats({ completed: 1800 * 7, total: 2400 * 7 });
       setSelected(query);
+      setCompleted(1000);
+      setTotal(3000);
       return;
     }
     if (query === "This month") {
-      setCurrentStats({ completed: 100000, total: 300000 });
       setSelected(query);
+      setCompleted(2000);
+      setTotal(5000);
       return;
     }
   };
   return (
+    
     <View style={styles.container}>
       <View style={{ flex: 4 }}>
         <ImageBackground
@@ -65,9 +70,7 @@ export default function TrackCalorie() {
           resizeMode={"cover"}
           source={require("../../assets/backgroundImages/veg.jpeg")}
         >
-          <CalorieProgress
-            {...currentStats}
-          />
+          <CalorieProgress completed={completed} total={total} />
         </ImageBackground>
       </View>
       <View
@@ -90,14 +93,22 @@ export default function TrackCalorie() {
                 backgroundColor: val === selected ? "#38ef7d" : "#11998e",
                 elevation: 5,
               }}
-              
             >
               {val}
             </Button>
           ))}
         </View>
-        <View style={[styles.buttonContainer, { height: width * 0.8 }]}>
-          <Text>{selected}</Text>
+        <View style={styles.statsContainer}>
+          <View style={{ borderColor:'black', flex:3, width:'70%'}}>
+
+          </View>
+          <View style={{ borderColor:'black', flex:1, width:'85%', display:'flex', flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+           <Text>Set daily calorie goal</Text>
+           <TextInput mode={"outlined"} keyboardType={"number-pad"}  style={{height:width*0.07}} outlineColor="#11998e"  />
+           <Button mode={'contained'} style={{backgroundColor:'#11998e'}}>
+            set
+           </Button>
+          </View>
         </View>
       </View>
     </View>
@@ -118,6 +129,18 @@ const styles = StyleSheet.create({
     elevation: 5,
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  statsContainer: {
+    backgroundColor: "#E6E6E6",
+    height: width * 0.8,
+    width: width * 0.97,
+    marginTop: 10,
+    borderRadius: 30,
+    elevation: 5,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
   },
