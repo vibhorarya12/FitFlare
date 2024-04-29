@@ -6,19 +6,26 @@ import {
   Dimensions,
   ScrollView,
   Text,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { Button, TextInput } from "react-native-paper";
+import { BarChart } from "react-native-chart-kit";
 const { width } = Dimensions.get("window");
 
 const items = ["Today", "This Week", "This month"];
-
+const data = {
+  labels: ["January", "February", "March", "April", "May", "June"],
+  datasets: [
+    {
+      data: [20, 45, 28, 80, 99, 43],
+     
+    },
+  ],
+};
 const CalorieProgress = ({ completed, total }) => {
   useEffect(() => {
-
-
-    console.log('mounted');
+    console.log("mounted");
   }, [total, completed]);
   return (
     <CircularProgress
@@ -62,9 +69,8 @@ export default function TrackCalorie() {
     }
   };
   return (
-    
-    <View style={styles.container}>
-      <View style={{ flex: 4 }}>
+    <ScrollView style={styles.container}>
+      <View style={{ height: width * 0.8 }}>
         <ImageBackground
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           resizeMode={"cover"}
@@ -75,10 +81,9 @@ export default function TrackCalorie() {
       </View>
       <View
         style={{
-          flex: 6,
+          height: width * 1.17,
           borderColor: "black",
           backgroundColor: "white",
-
           alignItems: "center",
         }}
       >
@@ -99,19 +104,66 @@ export default function TrackCalorie() {
           ))}
         </View>
         <View style={styles.statsContainer}>
-          <View style={{ borderColor:'black', flex:3, width:'70%'}}>
+          <ScrollView
+            style={{
+              borderColor: "black",
 
-          </View>
-          <View style={{ borderColor:'black', flex:1, width:'85%', display:'flex', flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-           <Text>Set daily calorie goal</Text>
-           <TextInput mode={"outlined"} keyboardType={"number-pad"}  style={{height:width*0.07}} outlineColor="#11998e"  />
-           <Button mode={'contained'} style={{backgroundColor:'#11998e'}}>
-            set
-           </Button>
+              width: "70%",
+            }}
+            horizontal={true}
+          >
+            <BarChart
+              fromZero={true}
+              showBarTops={false}
+              data={data}
+              width={width}
+              height={220}
+              yAxisLabel="$"
+              chartConfig={{
+                // backgroundColor: "#e26a00",
+
+                backgroundGradientFrom: "#E6E6E6",
+                backgroundGradientTo: "#E6E6E6",
+                decimalPlaces: 0, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(17, 153, 142, ${opacity})`, 
+                labelColor: (opacity = 1) => `rgba(27, 29, 31, ${opacity})`,
+                
+                style: {
+                  borderRadius: 2,
+                },
+                
+              }}
+              verticalLabelRotation={0}
+            
+            
+            />
+          </ScrollView>
+          <View
+            style={{
+              borderColor: "black",
+              flex: 1,
+              width: "85%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            <Text>Set daily calorie goal</Text>
+            <TextInput
+              mode={"outlined"}
+              keyboardType={"number-pad"}
+              style={{ height: width * 0.08, width: width * 0.3 }}
+              outlineColor="#11998e"
+            />
+            <Button mode={"contained"} style={{ backgroundColor: "#11998e" }}>
+              set
+            </Button>
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
