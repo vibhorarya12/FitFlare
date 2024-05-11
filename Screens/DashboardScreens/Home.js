@@ -172,7 +172,7 @@ export default function Home() {
               </Text>
             </View>
             <View style={styles.BoxItems}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('Set-Goal')}>
                 <Ionicons
                   name="footsteps"
                   size={width * 0.11}

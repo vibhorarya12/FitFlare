@@ -108,7 +108,7 @@ export default function TrackCalorie() {
             style={{
               borderColor: "black",
 
-              width: "70%",
+              width: "80%",
             }}
             horizontal={true}
           >
@@ -118,7 +118,8 @@ export default function TrackCalorie() {
               data={data}
               width={width}
               height={220}
-              yAxisLabel="$"
+              
+              yAxisSuffix=" kcal"
               chartConfig={{
                 // backgroundColor: "#e26a00",
 
@@ -127,7 +128,7 @@ export default function TrackCalorie() {
                 decimalPlaces: 0, // optional, defaults to 2dp
                 color: (opacity = 1) => `rgba(17, 153, 142, ${opacity})`, 
                 labelColor: (opacity = 1) => `rgba(27, 29, 31, ${opacity})`,
-                
+              
                 style: {
                   borderRadius: 2,
                 },
