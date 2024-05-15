@@ -10,7 +10,7 @@ import { getItem } from "./Utils/asyncStorage";
 import DashBoardScreen from "./Screens/Dashboard";
 
 const Stack = createNativeStackNavigator();
-
+export const testindata= "hello";
 export default function App() {
  const [showOnboarding, setShowOnboarding] = useState(null);
 //  useEffect(()=>{
@@ -61,8 +61,8 @@ return (
       <>
       <NavigationContainer>
        <Stack.Navigator  screenOptions={{headerShown:false}}>
-       {/* <Stack.Screen name="onboarding"  component={OnBoardingScreen}/> */}
-       {/* <Stack.Screen name="userinfo"  component={UserInfoBoarding}/> */}
+       <Stack.Screen name="onboard"  component={OnBoardingScreen}/>
+       <Stack.Screen name="userinfo"  component={UserInfoBoarding}/>
         <Stack.Screen name="dashboard"  component={DashBoardScreen}/>
        </Stack.Navigator>
       </NavigationContainer>

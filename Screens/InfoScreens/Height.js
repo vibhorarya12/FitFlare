@@ -10,6 +10,7 @@ import {
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { heightData } from "../../Src/Components/Constants/Constants";
 
 const { width, height } = Dimensions.get("window");
 
@@ -43,7 +44,7 @@ export default function Height() {
         <View style={styles.heightContainer}>
           <View style={styles.wheelScroller}>
             <ScrollPicker
-              dataSource={Array.from({ length: 230 }, (_, index) => index + 80)}
+              dataSource={heightData}
               selectedIndex={1}
               renderItem={(data, index) => (
                 <TouchableOpacity key={index} style={styles.item}>

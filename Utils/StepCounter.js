@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, Dimensions } from "react-native";
 import { Accelerometer } from "expo-sensors";
-
+import CircularProgress from "react-native-circular-progress-indicator";
+const {width} = Dimensions.get('window');
 export default function StepCounter() {
   const [steps, setSteps] = useState(0);
   const [isCounting, setIsCounting] = useState(false);
@@ -67,11 +68,31 @@ export default function StepCounter() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.steps}>Steps: {steps}</Text>
-      <Button title="Reset" onPress={resetSteps} />
-      <StatusBar style="auto" />
-    </View>
+    // <View style={styles.container}>
+    //   <Text style={styles.steps}>Steps: {steps}</Text>
+    //   <Button title="Reset" onPress={resetSteps} />
+    //   <StatusBar style="auto" />
+    // </View>
+    <CircularProgress
+    value={steps}
+    radius={width * 0.35}
+    duration={1500}
+    progressValueColor={"black"}
+    progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
+    maxValue={3000}
+    
+    title={"Steps today"}
+    titleColor={"black"}
+    titleStyle={{
+      fontWeight: "bold",
+      fontSize: width * 0.05,
+      opacity: 0.7,
+    }}
+    activeStrokeWidth={width * 0.05}
+    inActiveStrokeWidth={width * 0.02}
+    activeStrokeColor={"#ff5f6d"}
+    activeStrokeSecondaryColor={"#ffc371"}
+  />
   );
 }
 

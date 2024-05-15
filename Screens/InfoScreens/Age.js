@@ -10,6 +10,7 @@ import {
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { ageData } from "../../Src/Components/Constants/Constants";
 const { width, height } = Dimensions.get("window");
 
 export default function Age() {
@@ -42,7 +43,7 @@ export default function Age() {
         <View style={styles.ageContainer}>
           <View style={styles.wheelScroller}>
             <ScrollPicker
-              dataSource={Array.from({ length: 87 }, (_, index) => index + 14)}
+              dataSource={ageData}
               selectedIndex={1}
               renderItem={(data, index) => (
                 <TouchableOpacity key={index} style={styles.item}>

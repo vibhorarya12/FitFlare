@@ -11,15 +11,14 @@ import {
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-
+import { lbsData , kgData } from "../../Src/Components/Constants/Constants";
 const { width, height } = Dimensions.get("window");
 
 const Weight = () => {
   const navigation = useNavigation();
   const [isKilogram, setIsKilogram] = useState(true);
   const [selectedWeight, setSelectedWeight] = useState("17");
-  const lbsData = Array.from({ length: 661 }, (_, index) => index + 35);
-  const kgData = Array.from({ length: 300 }, (_, index) => index + 16);
+  
 
   const handleSwitch = useCallback(() => {
     setIsKilogram((prev) => !prev);

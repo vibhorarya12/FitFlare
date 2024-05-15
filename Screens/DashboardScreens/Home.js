@@ -15,6 +15,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { WaterIntakeCircle, WaterSelectorBox } from "../../Src/Components/WaterIntakeComponents";
+import StepCounter from "../../Utils/StepCounter";
 const { width} = Dimensions.get("window");
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
     <>
       <SafeAreaView style={styles.container}>
         <StatusBar  />
+       
         <View style={styles.ProgressContainer}>
           <View style={styles.tabBarContainer}>
             <TouchableOpacity>
@@ -46,25 +48,7 @@ export default function Home() {
             </TouchableOpacity>
           </View>
           <View style={styles.CircularProgress}>
-            <CircularProgress
-              value={1700}
-              radius={width * 0.35}
-              duration={1500}
-              progressValueColor={"black"}
-              progressValueStyle={{ fontSize: width * 0.12, opacity: 0.7 }}
-              maxValue={3000}
-              title={"Steps today"}
-              titleColor={"black"}
-              titleStyle={{
-                fontWeight: "bold",
-                fontSize: width * 0.05,
-                opacity: 0.7,
-              }}
-              activeStrokeWidth={width * 0.05}
-              inActiveStrokeWidth={width * 0.02}
-              activeStrokeColor={"#ff5f6d"}
-              activeStrokeSecondaryColor={"#ffc371"}
-            />
+            <StepCounter />
           </View>
           <View style={styles.stats}>
             <View style={styles.statsItem}>
